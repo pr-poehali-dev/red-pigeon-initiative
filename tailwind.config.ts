@@ -30,6 +30,12 @@ export default {
 					dark: '#B21E1E',
 					muted: '#FFF3F3',
 				},
+				redbird: {
+					DEFAULT: '#E32636',  // Ярко-красный
+					light: '#FF6B6B',    // Светло-красный
+					dark: '#9B111E',     // Темно-красный
+					muted: '#FFECEC',    // Очень светлый красный
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -100,12 +106,21 @@ export default {
 						transform: 'translateY(0)',
 						opacity: '1'
 					}
+				},
+				'pulse-slow': {
+					'0%, 100%': { 
+						opacity: '1' 
+					},
+					'50%': { 
+						opacity: '0.8' 
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fly-in': 'fly-in 0.6s ease-out'
+				'fly-in': 'fly-in 0.6s ease-out',
+				'pulse-slow': 'pulse-slow 3s ease-in-out infinite'
 			}
 		}
 	},

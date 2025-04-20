@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeatureSection from "@/components/FeatureSection";
 import BirdGrid from "@/components/BirdGrid";
+import PigeonHelp from "@/components/PigeonHelp";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -12,6 +13,7 @@ const Index = () => {
         <Hero />
         <FeatureSection />
         <BirdGrid />
+        <PigeonHelp />
       </main>
       <Footer />
     </div>

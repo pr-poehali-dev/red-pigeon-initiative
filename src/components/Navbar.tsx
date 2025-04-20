@@ -1,35 +1,58 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <header className="bg-pigeon text-white sticky top-0 z-50">
-      <div className="container mx-auto flex items-center justify-between py-4">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold">Red Pigeon</span>
-        </Link>
-        <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="hover:text-pigeon-light transition-colors">
-            Главная
-          </Link>
-          <Link to="/birds" className="hover:text-pigeon-light transition-colors">
-            Птицы
-          </Link>
-          <Link to="/help" className="hover:text-pigeon-light transition-colors">
-            Как помочь
-          </Link>
-          <Link to="/about" className="hover:text-pigeon-light transition-colors">
-            О проекте
-          </Link>
-        </nav>
-        <Button 
-          variant="outline" 
-          className="bg-white text-pigeon hover:bg-pigeon-muted border-white"
-        >
-          Поддержать
-        </Button>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-4">
+          <div className="flex items-center space-x-2">
+            <span className="text-redbird text-2xl font-bold">🕊️ Red Pigeon</span>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            <a href="#" className="text-gray-700 hover:text-redbird font-medium">Главная</a>
+            <a href="#rare-birds" className="text-gray-700 hover:text-redbird font-medium">Редкие птицы</a>
+            <a href="#help-pigeons" className="text-gray-700 hover:text-redbird font-medium">Помощь голубям</a>
+            <a href="#about" className="text-gray-700 hover:text-redbird font-medium">О проекте</a>
+            <Button className="bg-redbird hover:bg-redbird-dark text-white">
+              Помочь птицам
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu"
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 animate-fly-in">
+            <div className="flex flex-col space-y-4">
+              <a href="#" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Главная</a>
+              <a href="#rare-birds" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Редкие птицы</a>
+              <a href="#help-pigeons" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Помощь голубям</a>
+              <a href="#about" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">О проекте</a>
+              <Button className="bg-redbird hover:bg-redbird-dark text-white mx-4">
+                Помочь птицам
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
-    </header>
+    </nav>
   );
 };
 
