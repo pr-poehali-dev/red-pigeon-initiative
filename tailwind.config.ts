@@ -6,7 +6,7 @@ export default {
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -24,6 +24,12 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				pigeon: {
+					DEFAULT: '#D92626',
+					light: '#FF5555',
+					dark: '#B21E1E',
+					muted: '#FFF3F3',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,11 +90,22 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fly-in': {
+					'0%': { 
+						transform: 'translateY(20px)',
+						opacity: '0'
+					},
+					'100%': { 
+						transform: 'translateY(0)',
+						opacity: '1'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fly-in': 'fly-in 0.6s ease-out'
 			}
 		}
 	},
