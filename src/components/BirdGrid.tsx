@@ -1,5 +1,5 @@
 import BirdCard from "@/components/BirdCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Данные о птицах, занесенных в Красную книгу
@@ -140,20 +140,49 @@ const sedentaryBirds = [
 
 const BirdGrid = () => {
   const [activeTab, setActiveTab] = useState("endangered");
+  const [themeClass, setThemeClass] = useState("");
+
+  // Изменяем тему при смене вкладки
+  useEffect(() => {
+    if (activeTab === "sedentary") {
+      setThemeClass("cold-theme");
+    } else {
+      setThemeClass("");
+    }
+  }, [activeTab]);
 
   return (
-    <section id="rare-birds" className="py-16 bg-gray-50">
+    <section id="rare-birds" className={`py-16 transition-colors duration-500 ${themeClass ? 'bg-blue-900' : 'bg-gray-50'}`}>
       <div className="container mx-auto px-4">
-        <h2 className="section-title text-center">Птицы, нуждающиеся в защите</h2>
-        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
-          Эти птицы находятся под угрозой или требуют нашего внимания.
-          Каждый из нас может внести вклад в их сохранение.
+        <h2 className={`section-title text-center ${themeClass ? 'text-blue-300' : 'text-redbird'}`}>
+          {activeTab === "sedentary" ? "Холодные воды — дом для оседлых птиц" : "Птицы, нуждающиеся в защите"}
+        </h2>
+        <p className={`text-center ${themeClass ? 'text-blue-200' : 'text-gray-600'} mb-8 max-w-3xl mx-auto`}>
+          {activeTab === "sedentary" 
+            ? "Эти птицы обитают в суровых морских условиях, где глубокие синие воды скрывают их пищу."
+            : "Эти птицы находятся под угрозой или требуют нашего внимания. Каждый из нас может внести вклад в их сохранение."
+          }
         </p>
         
-        <Tabs defaultValue="endangered" value={activeTab} onValueChange={setActiveTab} className="w-full mb-8">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-            <TabsTrigger value="endangered" className="text-lg">Красная книга</TabsTrigger>
-            <TabsTrigger value="sedentary" className="text-lg">Оседлые</TabsTrigger>
+        <Tabs 
+          defaultValue="endangered" 
+          value={activeTab} 
+          onValueChange={setActiveTab} 
+          className="w-full mb-8"
+        >
+          <TabsList className={`grid w-full max-w-md mx-auto grid-cols-2 ${themeClass ? 'bg-blue-800' : ''}`}>
+            <TabsTrigger 
+              value="endangered" 
+              className={`text-lg ${themeClass ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : ''}`}
+            >
+              Красная книга
+            </TabsTrigger>
+            <TabsTrigger 
+              value="sedentary" 
+              className={`text-lg ${themeClass ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : ''}`}
+            >
+              Оседлые
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="endangered">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -168,6 +197,7 @@ const BirdGrid = () => {
                   fullDescription={bird.fullDescription}
                   habitat={bird.habitat}
                   threats={bird.threats}
+                  theme=""
                 />
               ))}
             </div>
@@ -185,6 +215,7 @@ const BirdGrid = () => {
                   fullDescription={bird.fullDescription}
                   habitat={bird.habitat}
                   threats={bird.threats}
+                  theme="cold"
                 />
               ))}
             </div>

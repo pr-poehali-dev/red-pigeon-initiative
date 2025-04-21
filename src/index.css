@@ -39,6 +39,12 @@
     --redbird-dark: 0 84% 50%;
     --redbird-light: 0 84% 70%;
     --redbird-muted: 0 84% 95%;
+    
+    /* Cold theme colors */
+    --cold-primary: 210 100% 50%;
+    --cold-dark: 210 100% 30%;
+    --cold-light: 200 100% 70%;
+    --cold-muted: 200 50% 95%;
   }
  
   .dark {
@@ -75,6 +81,12 @@
     --redbird-dark: 0 84% 50%;
     --redbird-light: 0 84% 70%;
     --redbird-muted: 0 30% 15%;
+    
+    /* Cold theme colors - dark mode */
+    --cold-primary: 210 100% 40%;
+    --cold-dark: 210 100% 20%;
+    --cold-light: 200 60% 60%;
+    --cold-muted: 200 30% 15%;
   }
 }
  
@@ -111,6 +123,23 @@
   .bird-tag {
     @apply absolute top-3 right-3 z-10 bg-redbird px-3 py-1 rounded-full text-white text-xs font-medium;
   }
+  
+  /* Cold theme specific styles */
+  .cold-theme {
+    @apply bg-blue-900 text-blue-100;
+  }
+  
+  .cold-theme .section-title {
+    @apply text-blue-300;
+  }
+  
+  .cold-theme .bird-card {
+    @apply bg-blue-800 border-blue-700 hover:shadow-blue-500/20;
+  }
+  
+  .cold-theme .bird-tag {
+    @apply bg-blue-600;
+  }
 }
 
 /* Define color utility classes */
@@ -136,4 +165,29 @@
 
 .border-redbird {
   border-color: hsl(var(--redbird));
+}
+
+/* Cold theme utility classes */
+.text-cold {
+  color: hsl(var(--cold-primary));
+}
+
+.bg-cold {
+  background-color: hsl(var(--cold-primary));
+}
+
+.bg-cold-dark {
+  background-color: hsl(var(--cold-dark));
+}
+
+.bg-cold-light {
+  background-color: hsl(var(--cold-light));
+}
+
+.bg-cold-muted {
+  background-color: hsl(var(--cold-muted));
+}
+
+.border-cold {
+  border-color: hsl(var(--cold-primary));
 }

@@ -13,6 +13,7 @@ interface BirdCardProps {
   fullDescription?: string;
   habitat?: string;
   threats?: string[];
+  theme?: string;
 }
 
 const BirdCard = ({ 
@@ -23,7 +24,8 @@ const BirdCard = ({
   description,
   fullDescription,
   habitat,
-  threats = []
+  threats = [],
+  theme = ""
 }: BirdCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
@@ -44,10 +46,51 @@ const BirdCard = ({
     });
   };
 
+  // Определяем классы в зависимости от темы
+  const getThemeClasses = () => {
+    if (theme === "cold") {
+      return {
+        card: "bg-blue-800 border-blue-700",
+        tag: "bg-blue-600",
+        title: "text-blue-300",
+        latin: "text-blue-400",
+        description: "text-blue-200",
+        button: "border-blue-500 text-blue-300 hover:bg-blue-600 hover:text-white",
+        dialog: {
+          title: "text-blue-500",
+          tag: "bg-blue-800 text-blue-300",
+          section: "text-blue-600",
+          content: "text-blue-700",
+          primary: "bg-blue-600 hover:bg-blue-700",
+          secondary: "border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white"
+        }
+      };
+    }
+    
+    return {
+      card: "",
+      tag: "bg-redbird",
+      title: "text-redbird",
+      latin: "text-gray-500",
+      description: "text-gray-700",
+      button: "border-redbird text-redbird hover:bg-redbird hover:text-white",
+      dialog: {
+        title: "text-redbird",
+        tag: "bg-redbird-muted text-redbird",
+        section: "text-gray-900",
+        content: "text-gray-700",
+        primary: "bg-redbird hover:bg-redbird-dark",
+        secondary: "border-redbird text-redbird hover:bg-redbird hover:text-white"
+      }
+    };
+  };
+
+  const themeClasses = getThemeClasses();
+
   return (
     <>
-      <Card className="bird-card overflow-hidden">
-        <div className="bird-tag absolute top-3 right-3 z-10 bg-redbird px-3 py-1 rounded-full text-white text-xs font-medium">{status}</div>
+      <Card className={`bird-card overflow-hidden ${themeClasses.card}`}>
+        <div className={`bird-tag absolute top-3 right-3 z-10 ${themeClasses.tag} px-3 py-1 rounded-full text-white text-xs font-medium`}>{status}</div>
         <div className="overflow-hidden h-60 relative">
           <img 
             src={image} 
@@ -60,21 +103,21 @@ const BirdCard = ({
           />
         </div>
         <CardContent className="bird-card-content p-5">
-          <h3 className="text-lg font-bold text-redbird">{name}</h3>
-          <p className="text-sm italic text-gray-500 mb-2">{latinName}</p>
-          <p className="text-sm text-gray-700 mb-4 line-clamp-3">{description}</p>
+          <h3 className={`text-lg font-bold ${themeClasses.title}`}>{name}</h3>
+          <p className={`text-sm italic ${themeClasses.latin} mb-2`}>{latinName}</p>
+          <p className={`text-sm ${themeClasses.description} mb-4 line-clamp-3`}>{description}</p>
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button 
                 variant="outline" 
-                className="w-full border-redbird text-redbird hover:bg-redbird hover:text-white transition-colors duration-300"
+                className={`w-full ${themeClasses.button} transition-colors duration-300`}
               >
                 Узнать больше
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+            <DialogContent className={`sm:max-w-[600px] max-h-[90vh] overflow-y-auto ${theme === "cold" ? "bg-blue-100" : ""}`}>
               <DialogHeader>
-                <DialogTitle className="text-redbird text-2xl">{name}</DialogTitle>
+                <DialogTitle className={themeClasses.dialog.title}>{name}</DialogTitle>
                 <DialogDescription className="italic">{latinName}</DialogDescription>
               </DialogHeader>
               <div className="space-y-4 mt-4">
@@ -87,45 +130,45 @@ const BirdCard = ({
                     target.src = "/placeholder.svg";
                   }}
                 />
-                <div className="px-1 py-1 bg-redbird-muted rounded-md text-redbird font-medium inline-block">
+                <div className={`px-1 py-1 ${themeClasses.dialog.tag} font-medium inline-block rounded-md`}>
                   {status}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-lg">Описание</h4>
-                  <p className="text-gray-700">{fullDescription || description}</p>
+                  <h4 className={`font-semibold text-lg ${themeClasses.dialog.section}`}>Описание</h4>
+                  <p className={themeClasses.dialog.content}>{fullDescription || description}</p>
                 </div>
                 {habitat && (
                   <div>
-                    <h4 className="font-semibold text-lg">Ареал обитания</h4>
-                    <p className="text-gray-700">{habitat}</p>
+                    <h4 className={`font-semibold text-lg ${themeClasses.dialog.section}`}>Ареал обитания</h4>
+                    <p className={themeClasses.dialog.content}>{habitat}</p>
                   </div>
                 )}
                 {threats && threats.length > 0 && (
                   <div>
-                    <h4 className="font-semibold text-lg">Угрозы виду</h4>
+                    <h4 className={`font-semibold text-lg ${themeClasses.dialog.section}`}>Угрозы виду</h4>
                     <ul className="list-disc pl-5">
                       {threats.map((threat, index) => (
-                        <li key={index} className="text-gray-700">{threat}</li>
+                        <li key={index} className={themeClasses.dialog.content}>{threat}</li>
                       ))}
                     </ul>
                   </div>
                 )}
                 <div>
-                  <h4 className="font-semibold text-lg">Как можно помочь</h4>
-                  <p className="text-gray-700 mb-4">
+                  <h4 className={`font-semibold text-lg ${themeClasses.dialog.section}`}>Как можно помочь</h4>
+                  <p className={`${themeClasses.dialog.content} mb-4`}>
                     Поддержите программы сохранения редких видов и проекты по защите 
                     естественной среды обитания этих птиц.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button 
-                      className="bg-redbird hover:bg-redbird-dark transition-colors duration-300"
+                      className={themeClasses.dialog.primary}
                       onClick={handleDonateClick}
                     >
                       Сделать пожертвование
                     </Button>
                     <Button 
                       variant="outline" 
-                      className="border-redbird text-redbird hover:bg-redbird hover:text-white transition-colors duration-300"
+                      className={themeClasses.dialog.secondary}
                       onClick={handleVolunteerClick}
                     >
                       Стать волонтёром
