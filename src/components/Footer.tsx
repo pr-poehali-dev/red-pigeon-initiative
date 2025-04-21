@@ -1,4 +1,4 @@
-import { WhatsApp, Phone, MapPin, Mail, MessageSquare } from "lucide-react";
+import { MessageSquare, Phone, MapPin, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 const Footer = () => {
@@ -63,7 +63,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-redbird-light transition-colors">
-                <WhatsApp size={20} />
+                <MessageSquare size={20} />
               </a>
               <a href="#" className="text-gray-400 hover:text-redbird-light transition-colors">
                 <MessageSquare size={20} />
