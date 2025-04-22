@@ -65,6 +65,23 @@ const BirdCard = ({
           secondary: "border-blue-500 text-blue-500 hover:bg-blue-600 hover:text-white"
         }
       };
+    } else if (theme === "yellow") {
+      return {
+        card: "bg-amber-100 border-amber-300",
+        tag: "bg-amber-500",
+        title: "text-amber-700",
+        latin: "text-amber-600",
+        description: "text-amber-800",
+        button: "border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white",
+        dialog: {
+          title: "text-amber-600",
+          tag: "bg-amber-100 text-amber-800",
+          section: "text-amber-700",
+          content: "text-amber-900",
+          primary: "bg-amber-500 hover:bg-amber-600 text-white",
+          secondary: "border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white"
+        }
+      };
     }
     
     return {
@@ -115,7 +132,11 @@ const BirdCard = ({
                 Узнать больше
               </Button>
             </DialogTrigger>
-            <DialogContent className={`sm:max-w-[600px] max-h-[90vh] overflow-y-auto ${theme === "cold" ? "bg-blue-100" : ""}`}>
+            <DialogContent className={`sm:max-w-[600px] max-h-[90vh] overflow-y-auto ${
+              theme === "cold" ? "bg-blue-100" : 
+              theme === "yellow" ? "bg-amber-50" : 
+              ""
+            }`}>
               <DialogHeader>
                 <DialogTitle className={themeClasses.dialog.title}>{name}</DialogTitle>
                 <DialogDescription className="italic">{latinName}</DialogDescription>

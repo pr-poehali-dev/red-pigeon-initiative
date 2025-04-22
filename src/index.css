@@ -45,6 +45,12 @@
     --cold-dark: 210 100% 30%;
     --cold-light: 200 100% 70%;
     --cold-muted: 200 50% 95%;
+    
+    /* Yellow theme colors */
+    --yellow-primary: 45 100% 50%;
+    --yellow-dark: 40 100% 40%;
+    --yellow-light: 45 100% 70%;
+    --yellow-muted: 45 100% 95%;
   }
  
   .dark {
@@ -87,6 +93,12 @@
     --cold-dark: 210 100% 20%;
     --cold-light: 200 60% 60%;
     --cold-muted: 200 30% 15%;
+    
+    /* Yellow theme colors - dark mode */
+    --yellow-primary: 45 80% 40%;
+    --yellow-dark: 40 80% 30%;
+    --yellow-light: 45 60% 60%;
+    --yellow-muted: 45 30% 15%;
   }
 }
  
@@ -140,6 +152,23 @@
   .cold-theme .bird-tag {
     @apply bg-blue-600;
   }
+  
+  /* Yellow theme specific styles */
+  .yellow-theme {
+    @apply bg-amber-50 text-amber-900;
+  }
+  
+  .yellow-theme .section-title {
+    @apply text-amber-500;
+  }
+  
+  .yellow-theme .bird-card {
+    @apply bg-amber-100 border-amber-300 hover:shadow-amber-500/20;
+  }
+  
+  .yellow-theme .bird-tag {
+    @apply bg-amber-500;
+  }
 }
 
 /* Define color utility classes */
@@ -190,4 +219,29 @@
 
 .border-cold {
   border-color: hsl(var(--cold-primary));
+}
+
+/* Yellow theme utility classes */
+.text-yellow {
+  color: hsl(var(--yellow-primary));
+}
+
+.bg-yellow {
+  background-color: hsl(var(--yellow-primary));
+}
+
+.bg-yellow-dark {
+  background-color: hsl(var(--yellow-dark));
+}
+
+.bg-yellow-light {
+  background-color: hsl(var(--yellow-light));
+}
+
+.bg-yellow-muted {
+  background-color: hsl(var(--yellow-muted));
+}
+
+.border-yellow {
+  border-color: hsl(var(--yellow-primary));
 }

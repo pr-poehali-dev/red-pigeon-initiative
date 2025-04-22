@@ -138,6 +138,90 @@ const sedentaryBirds = [
   }
 ];
 
+// Данные о птицах Желтой книги
+const yellowBookBirds = [
+  {
+    id: 1,
+    name: "Черный аист",
+    latinName: "Ciconia nigra",
+    status: "Потенциально уязвимый",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Flickr_-_Rainbirder_-_Black_Stork_%28Ciconia_nigra%29.jpg",
+    description: "Крупная перелетная птица с черным оперением, красным клювом и ногами, избегающая человека.",
+    fullDescription: "Черный аист — крупная птица с черным оперением с зеленоватым и пурпурным металлическим отливом. Грудь, брюхо и подхвостье белые. Клюв и ноги ярко-красные. В отличие от белого аиста, избегает соседства с человеком, селится в глухих лесах рядом с водоемами.",
+    habitat: "Старые глухие леса Евразии, близ рек, озер, болот и пойменных лугов.",
+    threats: [
+      "Вырубка старых лесов",
+      "Осушение болот и речных пойм",
+      "Беспокойство в гнездовой период",
+      "Браконьерство"
+    ]
+  },
+  {
+    id: 2,
+    name: "Сокол-сапсан",
+    latinName: "Falco peregrinus",
+    status: "Восстанавливающийся",
+    image: "https://upload.wikimedia.org/wikipedia/commons/a/aa/Falco_peregrinus_good_-_Christopher_Watson.jpg",
+    description: "Хищная птица, известная как самая быстрая в мире — при пикировании может развивать скорость до 320 км/ч.",
+    fullDescription: "Сокол-сапсан — хищная птица средней величины с характерным темным 'усом' на щеках. Верх тела сизо-серый, низ светлый с поперечными пестринами. Сапсан способен развивать феноменальную скорость при пикировании — до 320 км/ч, что делает его самой быстрой птицей и самым быстрым животным на планете.",
+    habitat: "Различные ландшафты от тундры до пустынь, часто гнездится на скалах и обрывах, в городах — на высотных зданиях.",
+    threats: [
+      "Применение пестицидов",
+      "Незаконный отлов для соколиной охоты",
+      "Разрушение мест гнездования",
+      "Беспокойство в гнездовой период"
+    ]
+  },
+  {
+    id: 3,
+    name: "Розовая чайка",
+    latinName: "Rhodostethia rosea",
+    status: "Редкий",
+    image: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Ross%27s_Gull_Rhodostethia_rosea.jpg",
+    description: "Небольшая чайка с нежно-розовым оперением и клиновидным хвостом, гнездящаяся в арктической тундре.",
+    fullDescription: "Розовая чайка — небольшая изящная птица с нежно-розовым оперением туловища, клиновидным хвостом и узким черным ошейником. Одна из самых редких и малоизученных чаек мира. Гнездится только в некоторых районах арктической тундры Сибири и Северной Америки.",
+    habitat: "Арктическая тундра вблизи дельт рек и озер.",
+    threats: [
+      "Изменение климата",
+      "Промышленное освоение Арктики",
+      "Нефтяное загрязнение",
+      "Ограниченный ареал гнездования"
+    ]
+  },
+  {
+    id: 4,
+    name: "Розовый фламинго",
+    latinName: "Phoenicopterus roseus",
+    status: "Уязвимый",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8d/Greater_flamingo_Walvis_Bay.jpg",
+    description: "Крупная птица с длинной шеей, характерным изогнутым клювом и ярко-розовым оперением.",
+    fullDescription: "Розовый фламинго — высокая птица с характерным изогнутым клювом и длинными ногами. Окраска варьирует от белой до ярко-розовой в зависимости от питания (каротиноиды в рачках придают перьям розовый цвет). Фламинго живут большими колониями, питаются, фильтруя воду изогнутым клювом.",
+    habitat: "Мелководные соленые и щелочные озера, лагуны, солончаки Африки, Южной Европы и Азии.",
+    threats: [
+      "Осушение и загрязнение водоемов",
+      "Изменение гидрологического режима",
+      "Беспокойство в местах гнездования",
+      "Браконьерство"
+    ]
+  },
+  {
+    id: 5,
+    name: "Кудрявый пеликан",
+    latinName: "Pelecanus crispus",
+    status: "Потенциально уязвимый",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Dalmatian_Pelican_Breeding_Plumage_Bulgaria.jpg",
+    description: "Крупная водоплавающая птица с характерным большим клювом и мешком для рыбы, серебристо-серым оперением и кудрявыми перьями на голове.",
+    fullDescription: "Кудрявый пеликан — одна из крупнейших летающих птиц мира, с размахом крыльев до 3,5 метров. Имеет серебристо-серое оперение и характерные вьющиеся перья на голове и шее. Питается преимущественно рыбой, которую ловит, зачерпывая воду большим клювом с кожистым мешком.",
+    habitat: "Мелководные пресные и солоноватые водоемы, дельты рек Южной Европы и Азии.",
+    threats: [
+      "Разрушение водно-болотных угодий",
+      "Браконьерство",
+      "Беспокойство в местах гнездования",
+      "Загрязнение водоемов и сокращение рыбных запасов"
+    ]
+  }
+];
+
 const BirdGrid = () => {
   const [activeTab, setActiveTab] = useState("endangered");
   const [themeClass, setThemeClass] = useState("");
@@ -146,22 +230,56 @@ const BirdGrid = () => {
   useEffect(() => {
     if (activeTab === "sedentary") {
       setThemeClass("cold-theme");
+    } else if (activeTab === "yellowBook") {
+      setThemeClass("yellow-theme");
     } else {
       setThemeClass("");
     }
   }, [activeTab]);
 
+  // Определяем заголовок и описание в зависимости от активной вкладки
+  const getTabContent = () => {
+    switch(activeTab) {
+      case "sedentary":
+        return {
+          title: "Холодные воды — дом для оседлых птиц",
+          description: "Эти птицы обитают в суровых морских условиях, где глубокие синие воды скрывают их пищу."
+        };
+      case "yellowBook":
+        return {
+          title: "Желтая книга — птицы под наблюдением",
+          description: "Эти птицы пока не находятся под критической угрозой, но требуют нашего внимания и охраны, чтобы не оказаться в Красной книге."
+        };
+      default:
+        return {
+          title: "Птицы, нуждающиеся в защите",
+          description: "Эти птицы находятся под угрозой или требуют нашего внимания. Каждый из нас может внести вклад в их сохранение."
+        };
+    }
+  };
+
+  const tabContent = getTabContent();
+
   return (
-    <section id="rare-birds" className={`py-16 transition-colors duration-500 ${themeClass ? 'bg-blue-900' : 'bg-gray-50'}`}>
+    <section id="rare-birds" className={`py-16 transition-colors duration-500 ${
+      themeClass === "cold-theme" ? 'bg-blue-900' : 
+      themeClass === "yellow-theme" ? 'bg-amber-50' : 
+      'bg-gray-50'
+    }`}>
       <div className="container mx-auto px-4">
-        <h2 className={`section-title text-center ${themeClass ? 'text-blue-300' : 'text-redbird'}`}>
-          {activeTab === "sedentary" ? "Холодные воды — дом для оседлых птиц" : "Птицы, нуждающиеся в защите"}
+        <h2 className={`section-title text-center ${
+          themeClass === "cold-theme" ? 'text-blue-300' : 
+          themeClass === "yellow-theme" ? 'text-amber-500' : 
+          'text-redbird'
+        }`}>
+          {tabContent.title}
         </h2>
-        <p className={`text-center ${themeClass ? 'text-blue-200' : 'text-gray-600'} mb-8 max-w-3xl mx-auto`}>
-          {activeTab === "sedentary" 
-            ? "Эти птицы обитают в суровых морских условиях, где глубокие синие воды скрывают их пищу."
-            : "Эти птицы находятся под угрозой или требуют нашего внимания. Каждый из нас может внести вклад в их сохранение."
-          }
+        <p className={`text-center ${
+          themeClass === "cold-theme" ? 'text-blue-200' : 
+          themeClass === "yellow-theme" ? 'text-amber-700' : 
+          'text-gray-600'
+        } mb-8 max-w-3xl mx-auto`}>
+          {tabContent.description}
         </p>
         
         <Tabs 
@@ -170,16 +288,38 @@ const BirdGrid = () => {
           onValueChange={setActiveTab} 
           className="w-full mb-8"
         >
-          <TabsList className={`grid w-full max-w-md mx-auto grid-cols-2 ${themeClass ? 'bg-blue-800' : ''}`}>
+          <TabsList className={`grid w-full max-w-md mx-auto grid-cols-3 ${
+            themeClass === "cold-theme" ? 'bg-blue-800' : 
+            themeClass === "yellow-theme" ? 'bg-amber-200' : 
+            ''
+          }`}>
             <TabsTrigger 
               value="endangered" 
-              className={`text-lg ${themeClass ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : ''}`}
+              className={`text-lg ${
+                themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
+                themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
+                ''
+              }`}
             >
               Красная книга
             </TabsTrigger>
             <TabsTrigger 
+              value="yellowBook" 
+              className={`text-lg ${
+                themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
+                themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
+                ''
+              }`}
+            >
+              Желтая книга
+            </TabsTrigger>
+            <TabsTrigger 
               value="sedentary" 
-              className={`text-lg ${themeClass ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : ''}`}
+              className={`text-lg ${
+                themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
+                themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
+                ''
+              }`}
             >
               Оседлые
             </TabsTrigger>
@@ -198,6 +338,24 @@ const BirdGrid = () => {
                   habitat={bird.habitat}
                   threats={bird.threats}
                   theme=""
+                />
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent value="yellowBook">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {yellowBookBirds.map((bird) => (
+                <BirdCard
+                  key={bird.id}
+                  name={bird.name}
+                  latinName={bird.latinName}
+                  status={bird.status}
+                  image={bird.image}
+                  description={bird.description}
+                  fullDescription={bird.fullDescription}
+                  habitat={bird.habitat}
+                  threats={bird.threats}
+                  theme="yellow"
                 />
               ))}
             </div>
