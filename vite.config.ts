@@ -19,7 +19,10 @@ export default defineConfig({
     port: 5173,
     allowedHosts: true,
     hmr: {
-      overlay: false // Disables the error overlay if you only want console errors
+      clientPort: 443, // Используем порт 443 для WebSocket через HTTPS
+      host: 'preview--red-pigeon-initiative.poehali.dev', // Адрес хоста, к которому подключается клиент
+      protocol: 'wss', // Используем безопасное WebSocket соединение
+      overlay: false // Отключаем оверлей с ошибками
     }
   },
 });
