@@ -295,7 +295,7 @@ const BirdGrid = () => {
           }`}>
             <TabsTrigger 
               value="endangered" 
-              className={`text-lg ${
+              className={`text-lg text-xs sm:text-sm md:text-base ${
                 themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
                 themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
                 ''
@@ -305,7 +305,7 @@ const BirdGrid = () => {
             </TabsTrigger>
             <TabsTrigger 
               value="yellowBook" 
-              className={`text-lg ${
+              className={`text-lg text-xs sm:text-sm md:text-base ${
                 themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
                 themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
                 ''
@@ -315,7 +315,7 @@ const BirdGrid = () => {
             </TabsTrigger>
             <TabsTrigger 
               value="sedentary" 
-              className={`text-lg ${
+              className={`text-lg text-xs sm:text-sm md:text-base ${
                 themeClass === "cold-theme" ? 'data-[state=active]:bg-blue-600 data-[state=active]:text-white' : 
                 themeClass === "yellow-theme" ? 'data-[state=active]:bg-amber-400 data-[state=active]:text-amber-900' : 
                 ''
