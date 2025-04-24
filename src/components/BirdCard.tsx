@@ -82,6 +82,23 @@ const BirdCard = ({
           secondary: "border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white"
         }
       };
+    } else if (theme === "winter") {
+      return {
+        card: "bg-blue-50 border-blue-300",
+        tag: "bg-blue-400",
+        title: "text-blue-700",
+        latin: "text-blue-500",
+        description: "text-blue-700",
+        button: "border-blue-400 text-blue-500 hover:bg-blue-400 hover:text-white",
+        dialog: {
+          title: "text-blue-700",
+          tag: "bg-blue-100 text-blue-600",
+          section: "text-blue-800",
+          content: "text-blue-700",
+          primary: "bg-blue-500 hover:bg-blue-600 text-white",
+          secondary: "border-blue-400 text-blue-500 hover:bg-blue-400 hover:text-white"
+        }
+      };
     }
     
     return {
@@ -135,6 +152,7 @@ const BirdCard = ({
             <DialogContent className={`sm:max-w-[600px] max-h-[90vh] overflow-y-auto ${
               theme === "cold" ? "bg-blue-100" : 
               theme === "yellow" ? "bg-amber-50" : 
+              theme === "winter" ? "bg-blue-50" :
               ""
             }`}>
               <DialogHeader>

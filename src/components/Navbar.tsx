@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { toast } = useToast();
+
+  // Проверяем, авторизован ли пользователь, при загрузке компонента
+  useEffect(() => {
+    const isUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(isUserLoggedIn);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    toast({
+      title: "Выход из аккаунта",
+      description: "Вы успешно вышли из своего аккаунта.",
+      duration: 3000,
+    });
+  };
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
@@ -24,9 +42,28 @@ const Navbar = () => {
             <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium">Наши обновления</Link>
             <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium">Спонсоры</Link>
             <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium">О проекте</Link>
-            <Button className="bg-redbird hover:bg-redbird-dark text-white">
-              Помочь птицам
-            </Button>
+            
+            {isLoggedIn ? (
+              <div className="flex items-center">
+                <Link to="/account" className="flex items-center text-gray-700 hover:text-redbird font-medium mr-4">
+                  <User className="w-5 h-5 mr-1" />
+                  <span>Аккаунт</span>
+                </Link>
+                <Button 
+                  variant="outline" 
+                  className="border-redbird text-redbird hover:bg-redbird hover:text-white"
+                  onClick={handleLogout}
+                >
+                  Выйти
+                </Button>
+              </div>
+            ) : (
+              <Link to="/register">
+                <Button className="bg-redbird hover:bg-redbird-dark text-white">
+                  Зарегистрироваться
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -52,9 +89,28 @@ const Navbar = () => {
               <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Наши обновления</Link>
               <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Спонсоры</Link>
               <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">О проекте</Link>
-              <Button className="bg-redbird hover:bg-redbird-dark text-white mx-4">
-                Помочь птицам
-              </Button>
+              
+              {isLoggedIn ? (
+                <>
+                  <Link to="/account" className="flex items-center text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">
+                    <User className="w-5 h-5 mr-1" />
+                    <span>Аккаунт</span>
+                  </Link>
+                  <Button 
+                    variant="outline" 
+                    className="border-redbird text-redbird hover:bg-redbird hover:text-white mx-4"
+                    onClick={handleLogout}
+                  >
+                    Выйти
+                  </Button>
+                </>
+              ) : (
+                <Link to="/register" className="px-4">
+                  <Button className="bg-redbird hover:bg-redbird-dark text-white w-full">
+                    Зарегистрироваться
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}
