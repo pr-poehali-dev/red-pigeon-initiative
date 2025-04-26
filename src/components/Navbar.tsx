@@ -41,6 +41,7 @@ const Navbar = () => {
             <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium">Помощь голубям</Link>
             <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium">Наши обновления</Link>
             <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium">Спонсоры</Link>
+            <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium">Как нас видит ИИ?</Link>
             <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium">О проекте</Link>
             
             {isLoggedIn ? (
@@ -88,6 +89,7 @@ const Navbar = () => {
               <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Помощь голубям</Link>
               <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Наши обновления</Link>
               <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Спонсоры</Link>
+              <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Как нас видит ИИ?</Link>
               <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">О проекте</Link>
               
               {isLoggedIn ? (

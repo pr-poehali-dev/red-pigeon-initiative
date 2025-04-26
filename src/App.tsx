@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import Updates from "./pages/Updates";
 import Sponsors from "./pages/Sponsors";
 import Register from "./pages/Register";
+import AIVision from "./pages/AIVision";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +23,7 @@ const App = () => (
           <Route path="/updates" element={<Updates />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/ai-vision" element={<AIVision />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
