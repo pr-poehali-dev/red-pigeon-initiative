@@ -3,14 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { useLanguage } from "@/context/LanguageContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { toast } = useToast();
-  const { t } = useLanguage();
 
   // Проверяем, авторизован ли пользователь, при загрузке компонента
   useEffect(() => {
@@ -23,7 +20,7 @@ const Navbar = () => {
     localStorage.removeItem("username");
     setIsLoggedIn(false);
     toast({
-      title: t('logout'),
+      title: "Выход",
       description: "Вы успешно вышли из своего аккаунта.",
       duration: 3000,
     });
@@ -39,34 +36,32 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/" className="text-gray-700 hover:text-redbird font-medium">{t('home')}</Link>
-            <Link to="/#rare-birds" className="text-gray-700 hover:text-redbird font-medium">{t('rareBirds')}</Link>
-            <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium">{t('helpPigeons')}</Link>
-            <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium">{t('updates')}</Link>
-            <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium">{t('sponsors')}</Link>
-            <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium">{t('aiVision')}</Link>
-            <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium">{t('about')}</Link>
-            
-            <LanguageSwitcher />
+            <Link to="/" className="text-gray-700 hover:text-redbird font-medium">Главная</Link>
+            <Link to="/#rare-birds" className="text-gray-700 hover:text-redbird font-medium">Редкие птицы</Link>
+            <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium">Помощь голубям</Link>
+            <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium">Обновления</Link>
+            <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium">Спонсоры</Link>
+            <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium">Как нас видит ИИ</Link>
+            <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium">О нас</Link>
             
             {isLoggedIn ? (
               <div className="flex items-center">
                 <Link to="/account" className="flex items-center text-gray-700 hover:text-redbird font-medium mr-4">
                   <User className="w-5 h-5 mr-1" />
-                  <span>{t('account')}</span>
+                  <span>Аккаунт</span>
                 </Link>
                 <Button 
                   variant="outline" 
                   className="border-redbird text-redbird hover:bg-redbird hover:text-white"
                   onClick={handleLogout}
                 >
-                  {t('logout')}
+                  Выйти
                 </Button>
               </div>
             ) : (
               <Link to="/register">
                 <Button className="bg-redbird hover:bg-redbird-dark text-white">
-                  {t('register')}
+                  Регистрация
                 </Button>
               </Link>
             )}
@@ -74,7 +69,6 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <LanguageSwitcher />
             <Button 
               variant="ghost" 
               size="icon" 
@@ -91,32 +85,32 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 animate-fly-in">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('home')}</Link>
-              <Link to="/#rare-birds" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('rareBirds')}</Link>
-              <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('helpPigeons')}</Link>
-              <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('updates')}</Link>
-              <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('sponsors')}</Link>
-              <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('aiVision')}</Link>
-              <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">{t('about')}</Link>
+              <Link to="/" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Главная</Link>
+              <Link to="/#rare-birds" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Редкие птицы</Link>
+              <Link to="/#help-pigeons" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Помощь голубям</Link>
+              <Link to="/updates" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Обновления</Link>
+              <Link to="/sponsors" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Спонсоры</Link>
+              <Link to="/ai-vision" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">Как нас видит ИИ</Link>
+              <Link to="/#about" className="text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">О нас</Link>
               
               {isLoggedIn ? (
                 <>
                   <Link to="/account" className="flex items-center text-gray-700 hover:text-redbird font-medium px-4 py-2 rounded hover:bg-gray-50">
                     <User className="w-5 h-5 mr-1" />
-                    <span>{t('account')}</span>
+                    <span>Аккаунт</span>
                   </Link>
                   <Button 
                     variant="outline" 
                     className="border-redbird text-redbird hover:bg-redbird hover:text-white mx-4"
                     onClick={handleLogout}
                   >
-                    {t('logout')}
+                    Выйти
                   </Button>
                 </>
               ) : (
                 <Link to="/register" className="px-4">
                   <Button className="bg-redbird hover:bg-redbird-dark text-white w-full">
-                    {t('register')}
+                    Регистрация
                   </Button>
                 </Link>
               )}
